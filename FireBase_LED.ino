@@ -1,10 +1,10 @@
 #include <WiFi.h>
 #include "FirebaseESP32.h"
 
-#define FIREBASE_HOST "hw-bootcamp.firebaseio.com" //Do not include https:// in FIREBASE_HOST
-#define FIREBASE_AUTH "Wleb7G85te03i9RRbZsU9X5Za56g4xwD5D3jMNLG"
-#define WIFI_SSID "Error_404"
-#define WIFI_PASSWORD "1029384756"
+#define FIREBASE_HOST "HOST" //Do not include https:// in FIREBASE_HOST
+#define FIREBASE_AUTH "Seret"
+#define WIFI_SSID "User_NAME"
+#define WIFI_PASSWORD "password"
 
 FirebaseData firebaseData;
 int LED = 16;
