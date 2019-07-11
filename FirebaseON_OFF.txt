@@ -1,0 +1,35 @@
+#include <ESP8266WiFi.h>
+#include <FirebaseArduino.h>
+
+#define WIFI_SSID       "AndroidAP"
+#define WIFI_PASSWORD   "รหัส Wifi"
+#define FIREBASE_HOST "banyapon-312ed.firebaseio.com"
+#define FIREBASE_AUTH "รหัส SECRET"
+
+const int ledGreen = D2;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.println(WiFi.localIP());
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("connecting");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  Serial.println();
+  Serial.print("connected: ");
+  Serial.println(WiFi.localIP());
+  
+  pinMode(ledGreen, OUTPUT);
+  
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  Firebase.setInt("device/led_control", 1);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(ledGreen, Firebase.getInt("device/led_control"));
+  delay(200);
+}
